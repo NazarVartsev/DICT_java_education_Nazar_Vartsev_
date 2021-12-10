@@ -1,24 +1,38 @@
 package Hangman;
+
 import java.util.Objects;
 import java.util.Scanner;
-
-// Appdata 4 !!!
 
 public class Hangman {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         WordsStorage wor = new WordsStorage();
+
         // Начало
         System.out.println("HANGMAN");
         System.out.println("The game will be available soon.");
+
         // Проверка введенного слова
-        System.out.println("Guess the word:");
-        String word_dash = wor.hidingWords();
-        System.out.println(word_dash);
-        String word_s = s.nextLine();
-        if (Objects.equals(word_s, wor.getWord())) {
-            System.out.println("You survived!");
-        } else {
+        wor.hidingWord();
+        String word_dash_old = wor.getWord_dash();
+        int a = 8;
+        while (a > 0) {
+            System.out.println("Enter letter:");
+            System.out.println(wor.getWord_dash());
+            String litter_s = s.nextLine();
+            char char_s = litter_s.charAt(0);
+            wor.openOneLitterWord(char_s);
+            if (Objects.equals(wor.getWord_dash(), wor.getWord())) {
+                System.out.println("You survived!");
+                break;
+            }
+            if (!Objects.equals(word_dash_old, wor.getWord_dash())) {
+                word_dash_old = wor.getWord_dash();
+                continue;
+            }
+            a--;
+        }
+        if (!Objects.equals(wor.getWord_dash(), wor.getWord())) {
             System.out.println("You lost!");
         }
     }
