@@ -36,6 +36,16 @@ public class WordsStorage {
         word_dash = word_dash_i;
     }
 
+    boolean checkLitterWord_dash(char char_s) {
+        int a = word.length();
+        for (int i = 0; i < a; i++) {
+            if (char_s == word_dash.charAt(i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     String getWord() {
         return word;
     }
