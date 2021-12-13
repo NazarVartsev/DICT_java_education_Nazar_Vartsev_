@@ -30,7 +30,14 @@ public class Hangman {
                 word_dash_old = wor.getWord_dash();
                 continue;
             }
-            a--;
+            boolean i_boolean = wor.checkLitterWord_dash(char_s);
+            if (i_boolean) {
+                System.out.println("No improvements");
+                a--;
+            } else {
+                System.out.println("That letter doesn't appear in the word");
+                a--;
+            }
         }
         if (!Objects.equals(wor.getWord_dash(), wor.getWord())) {
             System.out.println("You lost!");
