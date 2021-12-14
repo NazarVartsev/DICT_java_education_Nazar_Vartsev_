@@ -6,6 +6,8 @@ public class WordsStorage {
     private String word;
     private String word_dash = "";
     private final String[] words_list = {"python", "java", "hot dog", "Mia Khalifa"};
+    final char[] wrong_litter = new char[70];
+    private int i_wrong_litter = 0;
 
     // Выбор и сокрытие слова
     void hidingWord() {
@@ -44,6 +46,20 @@ public class WordsStorage {
             }
         }
         return false;
+    }
+
+    boolean getBooleanWrong_litter(char char_s) {
+        for (int i = 0; i <= i_wrong_litter; i++) {
+            if (char_s == wrong_litter[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void appendWrong_litter(char a) {
+        wrong_litter[i_wrong_litter] = a;
+        i_wrong_litter++;
     }
 
     String getWord() {
