@@ -5,6 +5,24 @@ import java.util.Scanner;
 
 public class Hangman {
     public static void main(String[] args) {
+        String s_string = "";
+        Hangman hang = new Hangman();
+
+        while (true) {
+            Scanner s = new Scanner(System.in);
+            if (Objects.equals(s_string, "play")) {
+                hang.startingGame();
+                s_string = "";
+            } else if (Objects.equals(s_string, "exit")) {
+                break;
+            } else {
+                System.out.println("Type \"play\"; to play the game, \"exit\" to quit:");
+                s_string = s.nextLine();
+            }
+        }
+    }
+
+    void startingGame() {
         Scanner s = new Scanner(System.in);
         WordsStorage wor = new WordsStorage();
 
