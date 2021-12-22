@@ -5,18 +5,32 @@ import java.util.Scanner;
 public class CoffeeMachine {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+        CoffeeMachine coffeeMachine = new CoffeeMachine();
+        String string_s = "";
+
+        while (true) {
+            if (string_s.equals("buy")) {
+                coffeeMachine.startingCoffeeMachine();
+                string_s = "";
+            } else if (string_s.equals("fill")) {
+
+            } else if (string_s.equals("take")) {
+
+            } else if (string_s.equals("exit")) {
+                break;
+            } else {
+                System.out.println("Write action (buy, fill, take, exit):");
+                string_s = s.nextLine();
+            }
+        }
+    }
+
+    void startingCoffeeMachine() {
+        Scanner s = new Scanner(System.in);
         Ingredients ingredients = new Ingredients();
 
-        System.out.println("Write how many ml of water the coffee machine has:");
-        int water = s.nextInt();
-        System.out.println("Write how many ml of milk the coffee machine has:");
-        int milk = s.nextInt();
-        System.out.println("Write how many grams of coffee beans the coffee machine has:");
-        int coffee_beans = s.nextInt();
-        ingredients.assignmentIngredients(water, milk, coffee_beans); // Заносим ингредиенты в машину
-
-        System.out.println("Write how many cups of coffee you will need:");
-        int cups = s.nextInt();
-        System.out.println(ingredients.examinationCupsCoffee(cups));
+        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
+        int coffee_s = s.nextInt();
+        System.out.println(ingredients.examinationCupsCoffee(coffee_s));
     }
 }
