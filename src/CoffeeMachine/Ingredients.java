@@ -8,7 +8,7 @@ public class Ingredients {
     private int milk;
     private int coffee_beans;
 
-    private boolean multiplicationIngredientsCups(int cups) {
+    /*private boolean multiplicationIngredientsCups(int cups) {
         int waterMultiplication = waterOneCup * cups;
         int milkMultiplication = milkOneCup * cups;
         int coffee_beansMultiplication = coffee_beansOneCup * cups;
@@ -34,11 +34,13 @@ public class Ingredients {
         } else {
             return "No, I can make only " + iCups + " cups of coffee";
         }
-    }
+    }*/
 
-    void assignmentIngredients(int water_i, int milk_i, int coffee_beans_i) {
+
+
+    /*void assignmentIngredients(int water_i, int milk_i, int coffee_beans_i) {
         water = water_i;
         milk = milk_i;
         coffee_beans = coffee_beans_i;
-    }
+    }*/
 }
