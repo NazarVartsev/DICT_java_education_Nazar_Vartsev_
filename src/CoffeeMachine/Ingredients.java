@@ -3,50 +3,29 @@ package CoffeeMachine;
 import java.util.Scanner;
 
 public class Ingredients {
-    private final int waterOneCup = 200;
-    private final int milkOneCup = 50;
-    private final int coffee_beansOneCup = 15;
     private int water = 400;
     private int milk = 540;
     private int coffee_beans = 120;
     private int cups = 9;
     private int money = 550;
+    private int waterOneCup;
+    private int milkOneCup;
+    private int coffee_beansOneCup;
 
-    /*private boolean multiplicationIngredientsCups(int cups) {
-        int waterMultiplication = waterOneCup * cups;
-        int milkMultiplication = milkOneCup * cups;
-        int coffee_beansMultiplication = coffee_beansOneCup * cups;
-        return waterMultiplication <= water ^ milkMultiplication <= milk ^ coffee_beansMultiplication <= coffee_beans;
-    }*/
+    private void examinationIngredients() {
+        boolean waterBoolean = water < 0;
+        boolean milkBoolean = milk < 0;
+        boolean coffee_beansBoolean = coffee_beans < 0;
+        boolean cupsBoolean = cups < 0;
 
-    /*private int examinationCupsMake() {
-        int i = 0;
-        while (multiplicationIngredientsCups(i)) {
-            i++;
+        if (waterBoolean | milkBoolean | coffee_beansBoolean | cupsBoolean) {
+            System.out.println("I have enough resources, making you a coffee!");
+            water += waterOneCup;
+            milk += milkOneCup;
+            coffee_beans += coffee_beansOneCup;
+            cups += 1;
         }
-        return i - 1;
-    }*/
-
-    /*String examinationCupsCoffee(int cups) {
-        int iCups = examinationCupsMake();
-        int iCupsSurplus = iCups - cups;
-
-        if (iCupsSurplus > 0) {
-            return "Yes, I can make that amount of coffee (and even " + iCupsSurplus + " more than that)";
-        } else if (iCupsSurplus == 0) {
-            return "Yes, I can make that amount of coffee";
-        } else {
-            return "No, I can make only " + iCups + " cups of coffee";
-        }
-    }*/
-
-
-
-    /*void assignmentIngredients(int water_i, int milk_i, int coffee_beans_i) {
-        water = water_i;
-        milk = milk_i;
-        coffee_beans = coffee_beans_i;
-    }*/
+    }
 
     void cookingCoffee(int coffee_s) {
         if (coffee_s == 1) {
@@ -54,19 +33,29 @@ public class Ingredients {
             coffee_beans -= 16;
             cups -= 1;
             money += 4;
+            waterOneCup = 250;
+            milkOneCup = 16;
+            coffee_beansOneCup = 16;
         } else if (coffee_s == 2) {
             water -= 350;
             milk -= 75;
             coffee_beans -= 20;
             cups -= 1;
             money += 7;
+            waterOneCup = 350;
+            milkOneCup = 75;
+            coffee_beansOneCup = 20;
         } else if (coffee_s == 3) {
             water -= 200;
             milk -= 100;
             coffee_beans -= 12;
             cups -= 1;
             money += 6;
+            waterOneCup = 200;
+            milkOneCup = 100;
+            coffee_beansOneCup = 12;
         }
+        examinationIngredients();
     }
 
     void fillIngredients() {
