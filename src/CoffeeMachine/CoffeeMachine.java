@@ -10,28 +10,30 @@ public class CoffeeMachine {
         String string_s = "";
 
         while (true) {
-            System.out.println("Write action (buy, fill, take, exit):");
+            System.out.println("Write action (buy, fill, take, remaining, exit):");
             string_s = s.nextLine();
             if (string_s.equals("buy")) {
-                ingredients = coffeeMachine.startingCoffeeMachine(ingredients);
+                ingredients = coffeeMachine.buyCoffee(ingredients);
             } else if (string_s.equals("fill")) {
                 ingredients.fillIngredients();
-                ingredients.printIngredients();
             } else if (string_s.equals("take")) {
                 ingredients.takeMoney();
-                ingredients.printIngredients();
             } else if (string_s.equals("exit")) {
                 break;
+            } else if (string_s.equals("remaining")){
+                ingredients.printIngredients();
             }
         }
     }
 
-    Ingredients startingCoffeeMachine(Ingredients ingredients) {
+    Ingredients buyCoffee(Ingredients ingredients) {
         Scanner s = new Scanner(System.in);
-        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino:");
+        System.out.println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, 4 – to\n" +
+                "main menu:");
         int coffee_s = s.nextInt();
+        if (coffee_s == 4)
+            return ingredients;
         ingredients.cookingCoffee(coffee_s);
-        ingredients.printIngredients();
         return ingredients;
     }
 }
