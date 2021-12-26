@@ -15,9 +15,9 @@ public class CoffeeMachine {
             if (string_s.equals("buy")) {
                 ingredients = coffeeMachine.buyCoffee(ingredients);
             } else if (string_s.equals("fill")) {
-                ingredients.fillIngredients();
+                ingredients = coffeeMachine.fillCoffeeMachine(ingredients);
             } else if (string_s.equals("take")) {
-                ingredients.takeMoney();
+                ingredients = coffeeMachine.takeFromCoffeeMachineMoney(ingredients);
             } else if (string_s.equals("exit")) {
                 break;
             } else if (string_s.equals("remaining")){
@@ -34,6 +34,16 @@ public class CoffeeMachine {
         if (coffee_s == 4)
             return ingredients;
         ingredients.cookingCoffee(coffee_s);
+        return ingredients;
+    }
+
+    Ingredients fillCoffeeMachine(Ingredients ingredients) {
+        ingredients.fillIngredients();
+        return ingredients;
+    }
+
+    Ingredients takeFromCoffeeMachineMoney(Ingredients ingredients) {
+        ingredients.takeMoney();
         return ingredients;
     }
 }
